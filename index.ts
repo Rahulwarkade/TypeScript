@@ -1,4 +1,8 @@
-let user = {name:"rahul",age:20}
-console.log("Hello typescript!!!")
+let hero = "name"
 
-console.log(user.name);
+function getHero(){
+    return "Thor"
+}
+
+hero = getHero();
+console.log(hero);

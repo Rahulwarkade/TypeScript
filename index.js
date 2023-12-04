@@ -1,3 +1,9 @@
-var user = { name: "rahul", age: 20 };
-console.log("Hello typescript!!!");
-console.log(user.name);
+"use strict";
+//String
+Object.defineProperty(exports, "__esModule", { value: true });
+var hero = "name";
+function getHero() {
+    return "thor";
+}
+hero = getHero();
+console.log(hero);
