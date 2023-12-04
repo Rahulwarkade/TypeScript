@@ -1,8 +1,9 @@
-let hero = "name"
+let hero: string;
 
 function getHero(){
     return "Thor"
 }
-
-hero = getHero();
+hero = getHero()
 console.log(hero);
+
+export {}
