@@ -5,6 +5,6 @@
 let name: string 
 
     name = "rahul"
-    console.log("Hi "+ name);
+    console.log("Hi "+ name+ " what's up!!!");
 
 export {}
