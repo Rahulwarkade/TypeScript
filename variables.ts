@@ -20,5 +20,12 @@ let male: boolean
     male = true
 
     console.log(male)
-    
+
+// type inference
+
+let nam = "rahul"
+let ag = 19
+let m = true
+
+    console.log(nam,ag,m)
 export {}
