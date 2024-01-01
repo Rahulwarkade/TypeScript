@@ -1,3 +1,5 @@
+// Learning TypeScript from documentation
+
 // PRIMITIVES : string,number, and boolean
 
 //string
