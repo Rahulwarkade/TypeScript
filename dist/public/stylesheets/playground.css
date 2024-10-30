@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+*::-webkit-scrollbar {
+  display: none;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+.section-a {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  color: hsl(0, 0%, 94%);
+  font-size: 2rem;
+  background-image: url("https://images.unsplash.com/photo-1575939238474-c8ada13b2724?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-attachment: fixed;
+}
+.section-a article {
+  color: #2B3761;
+}
+
+.section-b {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  color: hsl(0, 0%, 94%);
+  font-size: 2rem;
+  background-image: url("https://images.unsplash.com/photo-1527199372136-dff50c10ea34?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.section-b article {
+  color: #2B3761;
+}
+
+.section-c {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  color: hsl(0, 0%, 94%);
+  font-size: 2rem;
+  background-image: url("https://images.unsplash.com/photo-1502163140606-888448ae8cfe?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-attachment: fixed;
+}
+.section-c article {
+  color: #2B3761;
+}
+
+.section-d {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  color: hsl(0, 0%, 94%);
+  font-size: 2rem;
+  background-image: url("https://images.unsplash.com/photo-1527446163516-97510882b90e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.section-d article {
+  color: #2B3761;
+}/*# sourceMappingURL=playground.css.map */

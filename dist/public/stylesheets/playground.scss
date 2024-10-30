@@ -1,0 +1,34 @@
+
+@import "mixin";
+@import "variables";
+*{
+    margin : 0;
+    padding : 0;
+    box-sizing: border-box;
+    &::-webkit-scrollbar{
+        display : none;
+    }
+}
+
+html,body{
+    width : 100%;
+    height : 100%;
+}
+
+.section-a{
+    @include main-prop($urlOne);
+    background-attachment: fixed;
+}
+
+.section-b{
+    @include main-prop($urlTwo);
+}
+
+.section-c{
+    @include main-prop($urlThree);
+    background-attachment: fixed;
+}
+
+.section-d{
+    @include main-prop($urlFour);
+}
