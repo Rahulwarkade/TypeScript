@@ -1,0 +1,20 @@
+@mixin d-flex{
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction : column;
+}
+
+@mixin main-prop($url){
+    width : 100%;
+    height: 100vh;
+    position : relative;
+    color : hsl(0,0%,94%);
+    font-size : 2rem;
+    background-image : url($url);
+    background-size: cover;
+    @include d-flex;
+    article{
+        color : #2B3761;
+    }
+}

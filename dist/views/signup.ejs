@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../stylesheets/output.css">
+</head>
+<body class="w-screen h-screen">
+    <main class="w-full h-full">
+        <section class="w-full h-full flex justify-center items-center">
+            <div class="w-1/5 h-1/2 bg-slate-200 rounded-md drop-shadow-xl overflow-hidden flex justify-center items-center">
+                <form action="/signup" method="post" class=" w-full flex flex-col gap-4 items-center justify-center  ">
+
+                    <div class="flex w-full h-auto px-6">
+                        <div class="grow p-2">
+                           <label for="username" class="text-xl uppercase font-semibold">username</label>
+                            <input type="text" id="username" name="username" class="border-2 rounded-md w-full">
+                        </div>
+                    </div>
+                    <div class="flex w-full h-auto px-6">
+                        <div class="grow p-2"> 
+                            <label for="email" class="text-xl uppercase font-semibold">Email</label>
+                            <input type="text" id="email" name="email" class="border-2 rounded-md w-full">
+                        </div>
+                    </div>
+                    <div class="flex w-full h-auto px-6">
+                        <div class="grow p-2">
+                            <label for="pass" class="text-xl uppercase font-semibold">password</label>
+                            <input type="password" id="pass" name="password" class="border-2 rounded-md w-full">
+                        </div>
+                    </div>
+                    <button type="submit" class="px-4 py-2 bg-blue-400 rounded-md capitalize font-bold text-md">signup</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>
