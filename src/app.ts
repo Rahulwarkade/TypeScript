@@ -1,11 +1,12 @@
 import * as dotenv from 'dotenv';
+import jwt,{JwtPayload} from 'jsonwebtoken';
 import express,{Request, Response} from 'express';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import * as path from 'path'
 import {connectDatabase} from './connect.js';
 import urlModel from './urlMode.js';
-import userModel from './userModel.js';
+import userModel,{user} from './userModel.js';
 import shortid = require('shortid');
 import {isAuthenticated,setUser,getUser} from './auth'
 dotenv.config()
@@ -30,20 +31,24 @@ export interface customeReq extends Request
 {
     user?:{username:string,email:string,password:string,urls : string[]}
 }
-app.post('/shorturl',isAuthenticated,async (req:customeReq,res:Response)=>{
+app.post('/shorturl',isAuthenticated,async (req:Request,res:Response)=>{
 
     const shortUrl = await urlModel.create({
         id : shortid.generate(),
         redirecteUrl : req.body.url,   
         visitHistory : []
     });
-
-    if(!req.user)
-    {
-        res.redirect('login');
+    const us : string | JwtPayload = getUser(req.cookies?.token)
+    if(!us){
+        res.send("you are lougout");
         return;
     }
-    const mainUser = await userModel.findOne({email:req.user.email});
+    if(typeof us === 'string')
+    {
+        res.send("string token")
+        return;
+    }
+    const mainUser = await userModel.findOne({email:us.email});
     if(!mainUser){
         res.redirect('login');
         return;
@@ -70,9 +75,8 @@ app.post('/sigin',async (req:customeReq,res:Response)=>{
         return;
     }
     req.user = user;
-    const sessionId : string = shortid.generate(); 
-    setUser(sessionId,user);
-    res.cookie('session',sessionId);
+    const token = setUser(user);
+    res.cookie('token',token);
 
     res.render('home',{urls : req.user.urls});
 })

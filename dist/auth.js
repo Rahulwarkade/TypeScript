@@ -8,30 +8,33 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getUser = exports.setUser = exports.isAuthenticated = void 0;
-const userMap = new Map();
-const setUser = (id, user) => {
-    userMap.set(id, user);
+const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
+const secret = 'rahul';
+const setUser = (user) => {
+    return jsonwebtoken_1.default.sign({ username: user.username, email: user.email, password: user.password }, secret);
 };
 exports.setUser = setUser;
-const getUser = (id) => {
-    return userMap.get(id);
+const getUser = (token) => {
+    return jsonwebtoken_1.default.verify(token, secret);
 };
 exports.getUser = getUser;
 const isAuthenticated = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
-    const sessionId = (_a = req.cookies) === null || _a === void 0 ? void 0 : _a.session;
-    if (!sessionId) {
+    const token = (_a = req.cookies) === null || _a === void 0 ? void 0 : _a.token;
+    if (!token) {
         res.redirect("/login");
         return;
     }
-    const currUser = getUser(sessionId);
+    const currUser = jsonwebtoken_1.default.verify(token, secret);
     if (!currUser) {
         res.send("your are lougout");
         return;
     }
-    req.user = currUser;
     next();
 });
 exports.isAuthenticated = isAuthenticated;

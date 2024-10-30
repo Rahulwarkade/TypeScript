@@ -59,16 +59,22 @@ app.get('/playground', (req, res) => {
     res.render('playground', { nameOne: "Rahul Warkade", nameTwo: "Alpha monhito", nameThree: "Beta Gama", nameFour: "Ami lorem" });
 });
 app.post('/shorturl', auth_1.isAuthenticated, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    var _a;
     const shortUrl = yield urlMode_js_1.default.create({
         id: shortid.generate(),
         redirecteUrl: req.body.url,
         visitHistory: []
     });
-    if (!req.user) {
-        res.redirect('login');
+    const us = (0, auth_1.getUser)((_a = req.cookies) === null || _a === void 0 ? void 0 : _a.token);
+    if (!us) {
+        res.send("you are lougout");
         return;
     }
-    const mainUser = yield userModel_js_1.default.findOne({ email: req.user.email });
+    if (typeof us === 'string') {
+        res.send("string token");
+        return;
+    }
+    const mainUser = yield userModel_js_1.default.findOne({ email: us.email });
     if (!mainUser) {
         res.redirect('login');
         return;
@@ -90,9 +96,8 @@ app.post('/sigin', (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         return;
     }
     req.user = user;
-    const sessionId = shortid.generate();
-    (0, auth_1.setUser)(sessionId, user);
-    res.cookie('session', sessionId);
+    const token = (0, auth_1.setUser)(user);
+    res.cookie('token', token);
     res.render('home', { urls: req.user.urls });
 }));
 app.post('/signup', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
